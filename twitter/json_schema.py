@@ -6,16 +6,20 @@ import json
 
 filename = sys.argv[1]
 data = []
-
+i = 0
 try:
     with open(filename) as fname:
-    	data.append(json.load(fname))
+        for line in fname:
+            i=i+1
+            if i%2 == 1: #skip every other line since it is empty
+                data.append(json.loads(line))
 except Exception:
     print "Error while reading file: ", filename
     print "Check if the file complies with JSON format"
     print "\nUsage: python json_schema.py jsonfilename"
     sys.exit()
 
+#inner dfs
 def dfs_inner(x, indent):
     try:
         for key, value in x.iteritems():
