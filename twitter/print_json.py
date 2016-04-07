@@ -1,6 +1,5 @@
-# usage: python print_json.py filename tweetnumber path
-# Example:
-# 
+# usage: python print_json.py
+ 
 import json
 import sys
 
