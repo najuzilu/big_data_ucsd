@@ -1,6 +1,6 @@
 #!/bin/sh
 
-yum install -y python-matplotlib
+yum install -y python-matplotlib libreoffice-calc python-imaging
 
 pip install tweepy --user
 
