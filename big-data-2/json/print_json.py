@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 # usage: python print_json.py
  
 import json
@@ -33,7 +35,7 @@ try:
 except Exception:
     print "Error while reading file: ", filename
     print "\nCheck if the file complies with JSON format"
-    print "\nUsage: python json_schema.py jsonfilename"
+    print "\nUsage: print_json.py jsonfilename"
     sys.exit()
 
 
