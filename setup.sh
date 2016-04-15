@@ -1,6 +1,6 @@
 #!/bin/sh
 
-yum install -y python-matplotlib libreoffice-calc python-imaging python-pip
+sudo yum install -y python-matplotlib libreoffice-calc python-imaging python-pip
 
 pip install tweepy --user
 
