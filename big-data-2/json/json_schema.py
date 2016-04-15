@@ -1,5 +1,7 @@
+#!/usr/bin/python
+
 #prints the schema of a json file
-# usage: python json_schema.py jsonfilename
+# usage: json_schema.py jsonfilename
 
 import sys
 import json
@@ -16,7 +18,7 @@ try:
 except Exception:
     print "Error while reading file: ", filename
     print "Check if the file complies with JSON format"
-    print "\nUsage: python json_schema.py jsonfilename"
+    print "\nUsage: json_schema.py jsonfilename"
     sys.exit()
 
 #inner dfs
