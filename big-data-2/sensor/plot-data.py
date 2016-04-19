@@ -27,7 +27,9 @@ for line in file:
     
 file.close()
 
-fig, ax = plt.subplots()
+#fig, ax = plt.subplots()
+fig = plt.figure()
+ax = fig.add_subplot(111)
 
 secs = mdate.epoch2num(x)
 
@@ -36,7 +38,7 @@ ax.plot_date(secs, y)
 plt.xlabel('time')
 plt.ylabel(sys.argv[2])
 
-date_formatter = mdate.DateFormatter('%H:%M%S', tz=timezone('US/Pacific'))
+date_formatter = mdate.DateFormatter('%H:%M.%S', tz=timezone('US/Pacific'))
 ax.xaxis.set_major_formatter(date_formatter)
 fig.autofmt_xdate()
 
