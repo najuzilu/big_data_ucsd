@@ -8,18 +8,22 @@ import matplotlib.dates as mdate
 from pytz import timezone
 import socket
 
-minVal = 10
-maxVal = -10
+minVal = 0
+maxVal = 1
 
 x = []
 y = []
 
-fig, ax = plt.subplots()
+#fig, ax = plt.subplots()
+fig = plt.figure()
+ax = fig.add_subplot(111)
+ax.set_autoscaley_on(False)
+ax.set_ylim(minVal,maxVal)
 
 plt.xlabel('time')
 plt.ylabel(sys.argv[1])
 
-date_formatter = mdate.DateFormatter('%H:%M%S', tz=timezone('US/Pacific'))
+date_formatter = mdate.DateFormatter('%H:%M.%S', tz=timezone('US/Pacific'))
 
 fig.show()
 
@@ -41,11 +45,11 @@ for i in range(0, 60):
             
             val = float(match.group(1))
             if val < minVal:
-                minVal = val - 5
-                ax.set_ylim([minVal,maxVal])
+                minVal = val - 1
+                ax.set_ylim(minVal,maxVal)
             elif val > maxVal:
-                maxVal = val + 5
-                ax.set_ylim([minVal,maxVal])
+                maxVal = val + 1
+                ax.set_ylim(minVal,maxVal)
             
             x.append(timestamp)
             y.append(val)
