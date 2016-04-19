@@ -1,4 +1,5 @@
-# usage : python LiveTweets.py keyword
+# usage : python LiveTweets.py
+# enter keyword of your choice in the last line: track=['change this']
 
 import json
 from tweepy.streaming import StreamListener
