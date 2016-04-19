@@ -10,7 +10,7 @@ from pytz import timezone
 x = []
 y = []
 
-file = open(sys.argv[2], 'r')
+file = open(sys.argv[1], 'r')
 for line in file:
     #print line
     parts = re.split("\s+", line)
@@ -18,7 +18,7 @@ for line in file:
     data = parts[3].split(",")
 
     for field in data:
-        match = re.match(sys.argv[1] + '=(\d+\.\d+).*', field)
+        match = re.match(sys.argv[2] + '=(\d+\.\d+).*', field)
         if match:
             timestamp = float(parts[2])
             x.append(timestamp)
@@ -34,7 +34,7 @@ secs = mdate.epoch2num(x)
 ax.plot_date(secs, y)
 
 plt.xlabel('time')
-plt.ylabel(sys.argv[1])
+plt.ylabel(sys.argv[2])
 
 date_formatter = mdate.DateFormatter('%H:%M%S', tz=timezone('US/Pacific'))
 ax.xaxis.set_major_formatter(date_formatter)
