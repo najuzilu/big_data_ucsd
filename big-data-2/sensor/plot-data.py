@@ -12,15 +12,14 @@ y = []
 
 file = open(sys.argv[1], 'r')
 for line in file:
-    #print line
     parts = re.split("\s+", line)
     
-    data = parts[3].split(",")
+    data = parts[1].split(",")
 
     for field in data:
         match = re.match(sys.argv[2] + '=(\d+\.\d+).*', field)
         if match:
-            timestamp = float(parts[2])
+            timestamp = float(parts[0])
             x.append(timestamp)
             #time_parts = time.localtime(timestamp)
             y.append(float(match.group(1)))
