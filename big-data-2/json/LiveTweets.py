@@ -1,23 +1,31 @@
-# usage : python LiveTweets.py
-# enter keyword of your choice in the last line: track=['change this']
+#!/usr/bin/python
 
 import json
-from tweepy.streaming import StreamListener
-from tweepy import OAuthHandler, Stream
-from login import *
 import sys
+from tweepy import OAuthHandler, Stream
+from tweepy.streaming import StreamListener
 
 class TweetStreamListener(StreamListener):
     def on_data(self, data):
         tweet = json.loads(data)
-        print "\n||" + tweet["created_at"][4:-10] + "|| " + tweet["text"][:90]
+        if "created_at" in tweet:
+            print tweet["created_at"][4:-10] + " " + tweet["text"][:70] + "\n"
         return True
     
     def on_error(self, status):
         print status
 
-listener = TweetStreamListener()
-auth_key = OAuthHandler(consumer_key, consumer_secret)
-auth_key.set_access_token(access_token, access_token_secret)
-live_twitter_stream = Stream(auth_key, listener)
-live_twitter_stream.filter(track=['football'])
+auth = []
+f = open("auth", "r")
+for line in f:
+    auth.append(line.strip())
+f.close()
+
+try:
+    listener = TweetStreamListener()
+    auth_key = OAuthHandler(auth[0], auth[1])
+    auth_key.set_access_token(auth[2], auth[3])
+    live_twitter_stream = Stream(auth_key, listener)
+    live_twitter_stream.filter(track=[sys.argv[1]])
+except KeyboardInterrupt, e:
+    sys.exit()
