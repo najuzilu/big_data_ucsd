@@ -1,1 +1,3 @@
-Data sets and scripts for Big Data Modeling and Management Systems Coursera class.
+Data sets and scripts for Coursera Big Data Specialization. 
+
+https://www.coursera.org/specializations/bigdata
