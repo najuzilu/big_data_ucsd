@@ -2,7 +2,10 @@
 
 
 # install postgres server
-sudo yum install -y postgresql-server
+sudo yum install -y postgresql-server postgresql-jdbc
+
+# upgrade spark python to work with python 3
+sudo yum upgrade -y spark-python
 
 # create initial database
 sudo service postgresql initdb
@@ -28,6 +31,9 @@ psql -f init-postgres.sql
 # download and install anaconda for pandas, jupyter
 wget http://repo.continuum.io/archive/Anaconda3-4.0.0-Linux-x86_64.sh
 bash Anaconda3-4.0.0-Linux-x86_64.sh
+
+# add postgres jdbc jar to spark classpath
+echo "export SPARK_CLASSPATH=/usr/share/java/postgresql-jdbc-8.4.704.jar" >> ~/.bashrc
 
 # set environment variables to load spark libs in jupyter
 echo "export PYSPARK_DRIVER_PYTHON_OPTS=\"notebook\"" >> ~/.bashrc
