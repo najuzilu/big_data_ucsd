@@ -10,6 +10,12 @@ sudo yum upgrade -y spark-python
 # create initial database
 sudo service postgresql initdb
 
+# setup authentication
+echo "host    cloudera    cloudera     127.0.0.1/32   trust" > /tmp/pg
+sudo cat /var/lib/pgsql/data/pg_hba.conf >> /tmp/pg
+sudo cp /var/lib/pgsql/data/pg_hba.conf /var/lib/pgsql/data/pg_hba.conf.DIST
+sudo mv /tmp/pg /var/lib/pgsql/data/pg_hba.conf
+
 # start postgres server during boot
 sudo chkconfig --level 345 postgresql on
 
