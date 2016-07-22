@@ -31,6 +31,9 @@ sudo -u postgres psql -c "ALTER USER cloudera with superuser"
 # create default db for cloudera account
 sudo -u postgres createdb cloudera
 
+# decompress csv files
+gzip -d *.csv.gz
+
 # create and load tables for hands on
 psql -f init-postgres.sql
 
