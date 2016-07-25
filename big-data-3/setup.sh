@@ -52,3 +52,8 @@ echo "export SPARK_CLASSPATH=/usr/share/java/postgresql-jdbc-8.4.704.jar" >> ~/.
 # set environment variables to load spark libs in jupyter
 echo "export PYSPARK_DRIVER_PYTHON_OPTS=\"notebook\"" >> ~/.bashrc
 echo "export PYSPARK_DRIVER_PYTHON=jupyter"  >> ~/.bashrc
+
+cd mongodb
+./setup.sh
+cd ..
+
