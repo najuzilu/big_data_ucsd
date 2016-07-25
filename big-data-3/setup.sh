@@ -1,11 +1,19 @@
 #!/bin/bash
 
 
-# install postgres server
-sudo yum install -y postgresql-server postgresql-jdbc
+# install postgres server and mongodb
+sudo yum install -y postgresql-server postgresql-jdbc mongodb mongodb-server
 
 # upgrade spark python to work with python 3
 sudo yum upgrade -y spark-python
+
+# update spark log4j to be quiet and restart
+sudo cp setup/log4j.properties /usr/lib/spark/conf/
+sudo service spark-master restart
+sudo service spark-worker restart
+
+# start mongodb
+sudo service mongodb start
 
 # create initial database
 sudo service postgresql initdb
