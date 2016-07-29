@@ -41,6 +41,9 @@ sudo -u postgres createdb cloudera
 # decompress csv files
 gzip -d *.csv.gz
 
+# set permissions so postgres can read csv files
+chmod 644 *.csv
+
 # create and load tables for hands on
 psql -f setup/init-postgres.sql
 
