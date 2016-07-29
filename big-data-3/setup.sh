@@ -8,6 +8,7 @@ sudo yum upgrade -y spark-python
 
 # update spark log4j to be quiet and restart
 sudo cp setup/log4j.properties /usr/lib/spark/conf/
+sudo chmod 644 /usr/lib/spark/conf/log4j.properties
 sudo service spark-master restart
 sudo service spark-worker restart
 
