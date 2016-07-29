@@ -19,3 +19,5 @@ tar xzf dump.tar.gz
 # shut down server
 ./mongodb-linux-x86_64-3.2.8/bin/mongod --dbpath db --shutdown
 
+# make symlink
+ln -s mongodb-linux-x86_64-3.2.8 mongodb
