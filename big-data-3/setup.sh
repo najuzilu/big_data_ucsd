@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# set umask so unzipped files are readable
+umask 022
 
 # install postgres server and mongodb
 sudo yum install -y postgresql-server postgresql-jdbc
