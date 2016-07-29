@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# set umask so unzipped files are readable
-umask 022
-
 # install postgres server and mongodb
 sudo yum install -y postgresql-server postgresql-jdbc
 
@@ -28,6 +25,9 @@ sudo chkconfig --level 345 postgresql on
 
 # start postgres server
 sudo service postgresql start
+
+# set permissions so postgres can read csv files
+chmod 755 /home/cloudera/Downloads/big-data-3
 
 # create postgres account for cloudera user
 sudo -u postgres psql -c "CREATE USER cloudera"
