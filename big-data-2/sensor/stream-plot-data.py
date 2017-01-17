@@ -36,7 +36,7 @@ for i in range(0, 60):
     data = parts[3].split(",")
 
     for field in data:
-        match = re.match(sys.argv[1] + '=(\d+\.\d+).*', field)
+        match = re.match(sys.argv[1] + '=(\d+\.?\d+).*', field)
         if match:
             timestamp = float(parts[2])
 
