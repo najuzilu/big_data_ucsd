@@ -1,0 +1,21 @@
+'''
+Copy data into the Hadoop Distributed File System (HDFS)
+'''
+
+# Step 1: copy file to HDFS
+$ hadoop fs -copyFromLocal words.txt
+
+# Step 2: verify file was copied
+$ hadoop fs -ls
+
+# Step 3: copy file within HDFS
+$ hadoop fs -cp words.txt words2.txt
+$ hadoop fs -ls
+
+# Step 4: copy file from HDFS
+$ hadoop fs -copyToLocal words2.txt
+$ ls
+
+# Step 5: delete file in HDFS
+$ hadoop fs -rm words2.txt
+$ hadoop fs -ls

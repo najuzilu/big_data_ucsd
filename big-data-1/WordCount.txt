@@ -1,0 +1,21 @@
+'''
+Run WordCount program Instructions
+'''
+
+# Step 1: see MapReduce applications
+$ hadoop jar /usr/jars/hadoop-examples.jar
+
+# Step 2: see WordCount command line arguments
+$ hadoop jar /usr/jars/hadoop-examples.jar wordcount
+
+# Step 3: run WordCount for words.txt
+$ hadoop fs -ls
+$ hadoop jar /usr/jars/hadoop-examples.jar wordcount words.txt out
+
+# Step 4: see WordCount outcomes 
+$ hadoop fs -ls
+$ hadoop fs -ls out
+
+# Step 5: copy WordCount results to local file system
+$ hadoop fs -copyToLocal out/part-r-0000 local.txt
+$ more local.txt
