@@ -1,2 +1,4 @@
 auth
 .ipynb_checkpoints
+.*
+!/.gitignore

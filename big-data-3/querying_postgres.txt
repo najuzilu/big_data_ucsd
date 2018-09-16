@@ -1,0 +1,29 @@
+'''
+Querying Relational Data with Postgres
+'''
+
+# run psql
+$ psql
+
+# view table and column definitions
+>> \d
+>> \d buyclicks
+
+# query table
+>> select * from buyclicks;
+
+# filter rows and columns
+>> select price, userid from buyclicks;
+>> select price, userid from buyclicks where price > 10;
+
+# perform aggregate operations
+>> select avg(price) from buyclicks;
+>> select sum(price) from buyclicks;
+
+# combine two tables
+>> \d adclicks
+>> select adid, buyid, adclicks.userid 
+>> from adclicks join buyclicks on adclicks.userid = buyclicks.userid;
+
+# exit postgres
+>> q

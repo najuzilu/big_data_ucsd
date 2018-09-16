@@ -1,0 +1,14 @@
+'''
+Exploring Streaming Twitter Data
+'''
+
+cd Downloads/big-data-2/json
+
+# view real-time tweets - tweets containing word "president", "time"
+$ ./liveTweets.py president
+$ ./liveTweets.py time
+
+# plot real-time frequency of tweets
+$ ./PlotTweets.py president
+$ ./PlotTweets.py time
+

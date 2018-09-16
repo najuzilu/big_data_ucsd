@@ -1,0 +1,15 @@
+'''
+Exploring the Semistructured Data Model of JSON data
+'''
+
+$ cd Downloads/big-data-2/json
+$ more twitter.json
+$ ./json_schema.py twitter.json | more
+$ ./print_json.py
+	>> twitter.json
+	>> 99
+	>> text
+
+	>> twitter.json
+	>> 99
+	>> entities/hashtags

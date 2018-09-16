@@ -1,0 +1,25 @@
+'''
+Exploring Vector Data Models with Lucene
+'''
+
+$ cd $HOME/Downloads
+
+# download Lucene
+$ wget http://archive.apache.org/dist/lucene/java/5.5.0/lucene-5.5.0.tgz
+$ tar -xvzf lucene-5.5.0.tgz
+
+$ cd Downloads/big-data-2/vector
+
+# import and query text document
+$ ./runLuceneQuery.sh data
+	>> voters
+	>> delegates
+	>> voters delegates
+
+	# perform weighted queries (or "boosting")
+	>> voters^5 delegates
+	>> q
+
+$ ./runLuceneTFIDF.sh data
+	>> voters
+	>> delegates

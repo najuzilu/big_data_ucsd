@@ -1,0 +1,16 @@
+'''
+Exploring the array Data Model of an Image
+'''
+
+$ cd Downloads/big-data-2/image
+
+# display the image
+$ eog Australia.jpg
+
+# view the dimensions
+$ ./dimensions.py Australia.jpg
+
+# view pixel values
+$ ./pixel.py Australia.jpg 0 0
+$ ./pixel.py Australia.jpg 5000 0
+$ ./pixel.py Australia.jpg 2000 2000

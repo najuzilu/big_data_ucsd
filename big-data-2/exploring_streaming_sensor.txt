@@ -1,0 +1,15 @@
+'''
+Exploring Streaming Sensor Data
+'''
+
+$ cd Downloads/big-data-2/sensor
+
+# view streaming data
+$ ./stream-data.py
+
+# view key measurements
+$ more wxt-520-format.txt
+
+# create plot of streaming data
+$ ./stream-plot-data.py Sm
+$ ./stream-plot-data.py Ta
