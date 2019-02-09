@@ -12,24 +12,41 @@ MERGE (n) -[:TO {AssociationType:line.EXPERIMENTAL_SYSTEM}]-> (m)
 
 // calculate number of nodes in the graph
 
-match (n:MyNode)
-return count(n)
-
 match (n:TrialGene)
-return count(n)
+return count(n) //9656
 
 // calculate number of edges in the graph
 
-match (n:MyNode)-[r]->()
-return count(r)
-
 match (n:TrialGene)-[r]->()
-return count(r)
+return count(r) //46621
 
 // calculate number of loops in the graph
 
 match (n)-[r]->(n)
 return n, r limit 10 //count(*)
+//1221
 
-//
+// question 4- the count of all non loops edges
+// question 5- the pair of nodes with the maximum number of multi-edges between them
+// question 6- The 2-neighborhood of the node whose name is ‘BRCA1’
+
+// shortest path count
+
+match p=(a)-[:TO*]-(c) where a.Name='BRCA1' and c.Name='NBR1' return count(p) limit 1 //>> code failing - not sure if code is correct- but answer is 9
+
+// the top 2 nodes with the highest outdegree
+
+match (n:TrialGene)-[r]->()
+return n.Name as Node, count(r) as Outdegree
+order by Outdegree desc limit 2
+union
+match (a:TrialGene)-[r]->(leaf)
+where not((leaf)-->())
+return leaf.Name as Node, 0 as Outdegree // SNCA and BRCA1
+
+// degree histagram for network
+
+match (n:TrialGene)-[r]-()
+with n as nodes, count(distinct r) as degree
+return degree, count(nodes) order by degree asc // 821
 
