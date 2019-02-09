@@ -1,0 +1,35 @@
+// clear Neo4j database
+
+match (n)-[r]-() delete n, r
+match (n) delete n
+
+// load dataset
+
+LOAD CSV WITH HEADERS FROM "file:///Users/junaluzi/Desktop/neo4j/data/gene_gene_associations_50k.csv" AS line
+MERGE (n:TrialGene {Name:line.OFFICIAL_SYMBOL_A})
+MERGE (m:TrialGene {Name:line.OFFICIAL_SYMBOL_B})
+MERGE (n) -[:TO {AssociationType:line.EXPERIMENTAL_SYSTEM}]-> (m)
+
+// calculate number of nodes in the graph
+
+match (n:MyNode)
+return count(n)
+
+match (n:TrialGene)
+return count(n)
+
+// calculate number of edges in the graph
+
+match (n:MyNode)-[r]->()
+return count(r)
+
+match (n:TrialGene)-[r]->()
+return count(r)
+
+// calculate number of loops in the graph
+
+match (n)-[r]->(n)
+return n, r limit 10 //count(*)
+
+//
+
