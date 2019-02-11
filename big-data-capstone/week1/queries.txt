@@ -1,0 +1,72 @@
+Query 1: What is the Distribution of Operating Systems Used by Users?
+source="/Volumes/JL Drive/IMF/bd_files/big-data-capstone/week1/flamingo-data/user-session.csv" host="Junas-MacBook-Pro.local" | stats count by platformType
+
+Query 2: What are the two most Commonly-Clicked Ads?
+source="/Volumes/JL Drive/IMF/bd_files/big-data-capstone/week1/flamingo-data/ad-clicks.csv" host="Junas-MacBook-Pro.local" | stats count by adCategory | sort 2 -num(count)
+
+Query 3: What are the two most Commonly-Purchased Products?
+source="/Volumes/JL Drive/IMF/bd_files/big-data-capstone/week1/flamingo-data/buy-clicks.csv" host="Junas-MacBook-Pro.local" | stats count by buyId | sort 2 -num(count)
+
+Query 4: What is the Average Team Size?
+source="/Volumes/JL Drive/IMF/bd_files/big-data-capstone/week1/flamingo-data/team-assignments.csv" host="Junas-MacBook-Pro.local" | stats count by team | stats avg(count)
+
+========================== Part 1 Simple aggregation ==========================
+isHit ratio:
+source="/Volumes/JL Drive/IMF/bd_files/big-data-capstone/week1/flamingo-data/game-clicks.csv" host="Junas-MacBook-Pro.local" | stats avg(isHit)
+
+Min and max prices for items sold:
+source="/Volumes/JL Drive/IMF/bd_files/big-data-capstone/week1/flamingo-data/buy-clicks.csv" host="Junas-MacBook-Pro.local" | stats min(price)
+source="/Volumes/JL Drive/IMF/bd_files/big-data-capstone/week1/flamingo-data/buy-clicks.csv" host="Junas-MacBook-Pro.local" | stats max(price)
+
+Total money from items sold:
+source="/Volumes/JL Drive/IMF/bd_files/big-data-capstone/week1/flamingo-data/buy-clicks.csv" host="Junas-MacBook-Pro.local" | stats sum(price)
+
+========================== Part 2 Filtering and aggregation ==========================
+For all the “end” events, what is average team level for users playing on windows?:
+source="/Volumes/JL Drive/IMF/bd_files/big-data-capstone/week1/flamingo-data/user-session.csv" host="Junas-MacBook-Pro.local" platformType="windows" sessionType="end" | stats avg(teamLevel)
+
+ What about playing on either Windows or Mac?
+ source="/Volumes/JL Drive/IMF/bd_files/big-data-capstone/week1/flamingo-data/user-session.csv" host="Junas-MacBook-Pro.local" (platformType="iphone" OR platformType="mac") sessionType="end" | stats avg(teamLevel)
+
+========================== Part 3 Locating the types of aggregate operations ==========================
+Statistical functions in Splunk:
+
+http://docs.splunk.com/Documentation/Splunk/6.1.4/SearchReference/Commonstatsfunctions#Aggregate_functions
+
+========================== Filtering ==========================
+For a user id 1017, what platform(s) were used?:
+source="/Volumes/JL Drive/IMF/bd_files/big-data-capstone/week1/flamingo-data/user-session.csv" host="Junas-MacBook-Pro.local" userId=1017 | stats count by platformType
+
+Which users completed level 2 while playing on an android device?
+source="/Volumes/JL Drive/IMF/bd_files/big-data-capstone/week1/flamingo-data/user-session.csv" host="Junas-MacBook-Pro.local" sessionType=end teamLevel=2 platformType=android | table userId | sort num(userId)
+
+========================== QUIZ ==========================
+
+1)
+source="/Volumes/JL Drive/IMF/bd_files/big-data-capstone/week1/flamingo-data/ad-clicks.csv" host="Junas-MacBook-Pro.local" | stats count(adId)
+>> 8162
+
+2)
+source="/Volumes/JL Drive/IMF/bd_files/big-data-capstone/week1/flamingo-data/ad-clicks.csv" host="Junas-MacBook-Pro.local" | stats count by adCategory
+>> 9
+
+3)
+source="/Volumes/JL Drive/IMF/bd_files/big-data-capstone/week1/flamingo-data/ad-clicks.csv" host="Junas-MacBook-Pro.local" | stats count by adCategory
+>> 6913 (do some math on the side)
+
+4)
+source="/Volumes/JL Drive/IMF/bd_files/big-data-capstone/week1/flamingo-data/buy-clicks.csv" host="Junas-MacBook-Pro.local" | stats sum(price)
+>> 428
+
+5)
+source="/Volumes/JL Drive/IMF/bd_files/big-data-capstone/week1/flamingo-data/buy-clicks.csv" host="Junas-MacBook-Pro.local" | stats count by buyId
+>> 6
+
+6)
+source="/Volumes/JL Drive/IMF/bd_files/big-data-capstone/week1/flamingo-data/buy-clicks.csv" host="Junas-MacBook-Pro.local" | stats max(price)
+>> 20
+
+7)
+source="/Volumes/JL Drive/IMF/bd_files/big-data-capstone/week1/flamingo-data/buy-clicks.csv" host="Junas-MacBook-Pro.local" | stats count by buyId
+>> 2
+
