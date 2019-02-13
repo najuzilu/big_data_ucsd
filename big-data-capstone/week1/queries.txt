@@ -70,3 +70,38 @@ source="/Volumes/JL Drive/IMF/bd_files/big-data-capstone/week1/flamingo-data/buy
 source="/Volumes/JL Drive/IMF/bd_files/big-data-capstone/week1/flamingo-data/buy-clicks.csv" host="Junas-MacBook-Pro.local" | stats count by buyId
 >> 2
 
+========================== ASSIGNMENT ==========================
+1)
+source="/Volumes/JL Drive/IMF/bd_files/big-data-capstone/week1/flamingo-data/buy-clicks.csv" host="Junas-MacBook-Pro.local" | stats sum(price)
+
+2)
+source="/Volumes/JL Drive/IMF/bd_files/big-data-capstone/week1/flamingo-data/buy-clicks.csv" host="Junas-MacBook-Pro.local" | stats count by buyId
+
+3)
+source="/Volumes/JL Drive/IMF/bd_files/big-data-capstone/week1/flamingo-data/buy-clicks.csv" host="Junas-MacBook-Pro.local" | stats count by buyId | stats sum(price)
+
+4)
+source="/Volumes/JL Drive/IMF/bd_files/big-data-capstone/week1/flamingo-data/buy-clicks.csv" host="Junas-MacBook-Pro.local" | stats sum(price) by userId | sort 10 sum(price) desc
+
+
+
+5) id = 2229
+source="/Volumes/JL Drive/IMF/bd_files/big-data-capstone/week1/flamingo-data/user-session.csv" host="Junas-MacBook-Pro.local" userId=2229 | stats count by platformType
+
+source="/Volumes/JL Drive/IMF/bd_files/big-data-capstone/week1/flamingo-data/game-clicks.csv" host="Junas-MacBook-Pro.local" userId=2229 | stats sum(isHit) as Sum, count(isHit) as Count by userId | eval answer = Sum / Count * 100
+
+
+
+6) id = 12
+source="/Volumes/JL Drive/IMF/bd_files/big-data-capstone/week1/flamingo-data/user-session.csv" host="Junas-MacBook-Pro.local" userId=12 | stats count by platformType
+
+source="/Volumes/JL Drive/IMF/bd_files/big-data-capstone/week1/flamingo-data/game-clicks.csv" host="Junas-MacBook-Pro.local" userId=12 | stats sum(isHit) as Sum, count(isHit) as Count by userId | eval answer = Sum / Count * 100
+
+
+
+
+7) id = 471
+source="/Volumes/JL Drive/IMF/bd_files/big-data-capstone/week1/flamingo-data/user-session.csv" host="Junas-MacBook-Pro.local" userId=471 | stats count by platformType
+
+source="/Volumes/JL Drive/IMF/bd_files/big-data-capstone/week1/flamingo-data/game-clicks.csv" host="Junas-MacBook-Pro.local" userId=471 | stats sum(isHit) as Sum, count(isHit) as Count by userId | eval answer = Sum / Count * 100
+
