@@ -8,8 +8,8 @@ CREATE CONSTRAINT ON (i:ChatItem) ASSERT i.id IS UNIQUE;
 
 #### Clean environment ####
 ```cypher
-match (a)-[r]->() delete a,r
-match (a) delete a
+match (a)-[r]->() delete a,r;
+match (a) delete a;
 ```
 
 #### Load file chat_create_team_chat.csv ####
@@ -90,8 +90,8 @@ order by length(p) desc limit 1;
 
 #### Part 2 - Find users in the longest conversation chain ####
 ```cypher
-match p=(ione)-[:ResponseTo*]->(itwo)
-where length(p)=9 with p
+match p=(ione)-[:ResponseTo*9]->(itwo)
+with p
 match (u)-[:CreateChat]->(i)
 where i in nodes(p)
 return count(distinct u);
