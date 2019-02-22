@@ -137,17 +137,17 @@ create (u1)-[:InteractsWith]->(u2);
 match (u1)-[r:InteractsWith]->(u1) delete r;
 ```
 
-#### Part 2 - ####
-
-#### ####
+#### Part 2 - Creating the Clustering Coefficient ####
 ```cypher
 match (u1:User)-[r1:InteractsWith]->(u2:User)
 where u1.id <> u2.id
-with u1, collect(u2.id) as neighbors, count(distinct(u2)) as neighborAmount
+AND u1.id in [394,2067,1087,209,554,999,516,1627,461,668]
+with u1, collect(u2.id) as neighbors, count(distinct(u2)) as neighborCount
 match (u3:User)-[r2:InteractsWith]->(u4:User)
 where (u3.id in neighbors) AND (u4.id in neighbors) AND (u3.id <> u4.id)
-with u1, u3, u4, neighborAmount, case
-
+with u1, u3, u4, neighborCount,
+case when count(r2) > 0 then 1
+else 0
+end as answer
+return u1.id, sum(answer)*1.0/(neighborCount*(neighborCount-1)) as cte order by cte desc limit 10;
 ```
-
-
