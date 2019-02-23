@@ -1,11 +1,10 @@
-# Big Data Specialization #
-# University of California San Diego #
+# Big Data Specialization UCSD #
 
 Drive better business decisions with an overview of how big data is organized, analyzed, and interpreted. Apply your insights to real-world problems and questions.
 
 Big Data Specialization - [_in progress_]()
 
-** Skills gained: **
+**Skills gained:**
 * Big Data
 * Neo4j
 * Mongodb
