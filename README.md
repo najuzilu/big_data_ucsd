@@ -3,6 +3,7 @@
 Drive better business decisions with an overview of how big data is organized, analyzed, and interpreted. Apply your insights to real-world problems and questions.
 
 Big Data Specialization - [certificate](https://www.coursera.org/account/accomplishments/specialization/PSGMCRQTYGF5)
+
 _Completed February 2019_
 
 **Skills gained:**
